@@ -1,7 +1,8 @@
 import time
 import os
 from datetime import datetime
-import picamera
+from picamera2 import Picamera2, Preview
+from picamera2.encoders import H264Encoder
 import subprocess
 
 def enregistrer_video(duree):
@@ -14,13 +15,20 @@ def enregistrer_video(duree):
     fichier_h264 = os.path.join(base_path, f"video_{timestamp}.h264")
     fichier_mp4 = os.path.join(base_path, f"video_{timestamp}.mp4")
 
-    with picamera.PiCamera(resolution=(2592, 2592)) as camera:
-        camera.start_preview()
-        camera.start_recording(fichier_h264)
-        print(f"Enregistrement de la vidéo pendant {duree} secondes...")
-        time.sleep(duree)
-        camera.stop_recording()
-        camera.stop_preview()
+    picam2 = Picamera2()
+    video_config = picam2.create_video_configuration(main={"size": (2592, 2592)})
+    picam2.configure(video_config)
+
+    encoder = H264Encoder(10000000)
+
+    picam2.start_preview(Preview.DRM)  # Utilisation de la prévisualisation DRM
+    picam2.start_recording(encoder, fichier_h264)
+    
+    print(f"Enregistrement de la vidéo pendant {duree} secondes...")
+    time.sleep(duree)
+    picam2.stop_recording()
+    picam2.stop_preview()
+    picam2.close()
 
     print(f"Conversion de {fichier_h264} en {fichier_mp4}...")
 
