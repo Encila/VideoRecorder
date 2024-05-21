@@ -21,7 +21,7 @@ def enregistrer_video(duree):
 
     encoder = H264Encoder(10000000)
 
-    picam2.start_preview(Preview.DRM)  # Utilisation de la prévisualisation DRM
+    picam2.start_preview(Preview.QTGL)
     picam2.start_recording(encoder, fichier_h264)
     
     print(f"Enregistrement de la vidéo pendant {duree} secondes...")
