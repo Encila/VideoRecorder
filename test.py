@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import (QApplication, QHBoxLayout, QLabel, QPushButton,
                              QVBoxLayout, QWidget)
 
 from picamera2 import Picamera2
-from picamera2.encoders import H264Encoder, FfmpegEncoder
+from picamera2.encoders import FfmpegEncoder
 from picamera2.outputs import FileOutput
 from picamera2.previews.qt import QGlPicamera2
 
