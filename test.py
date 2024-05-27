@@ -1,13 +1,14 @@
 import os
 import sys
 import logging
+import coloredlogs
 from datetime import datetime
 from picamera2 import Picamera2
 import argparse
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+coloredlogs.install(level='INFO', logger=logger, fmt='%(asctime)s %(name)s %(levelname)s %(message)s')
 
 def setup_directory(base_path):
     """Create the directory if it doesn't exist."""
