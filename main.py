@@ -12,11 +12,11 @@ def enregistrer_video(duree):
     fichier = os.path.join(base_path, f"video_{timestamp}.mp4")
 
     picam2 = Picamera2()
-    #video_config = picam2.create_video_configuration(main={"size": (2592, 2592)})
+    video_config = picam2.create_video_configuration(main={"size": (2592, 2592)})
         
     print(f"Enregistrement de la vidéo pendant {duree} secondes...")
 
-    picam2.start_and_record_video(fichier, duration=duree) # show_preview=True, config=video_config
+    picam2.start_and_record_video(fichier, duration=duree, config=video_config) # show_preview=True, config=video_config
 
     print(f"Enregistrement terminé. Vidéo sauvegardée sous {fichier}")
 
