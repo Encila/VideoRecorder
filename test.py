@@ -8,9 +8,9 @@ import argparse
 
 # Custom color scheme for log levels to match your terminal
 custom_colors = {
-    'debug': {'color': 'cyan'},
-    'info': {'color': 'green', 'bold': True},
-    'warning': {'color': 'yellow', 'bold': True},
+    'debug': {'color': 'green'},
+    'info': {'color': 'grey'},
+    'warning': {'color': 'yellow'},
     'error': {'color': 'red', 'bold': True},
     'critical': {'color': 'magenta', 'bold': True},
 }
