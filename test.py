@@ -6,9 +6,8 @@ from datetime import datetime
 from picamera2 import Picamera2
 import argparse
 
-# Custom color scheme for log levels to match your terminal
+# Custom color scheme for log levels
 custom_colors = {
-    'time': {'color': 'white'},
     'debug': {'color': 'green'},
     'info': {'color': 'white'},
     'warning': {'color': 'yellow'},
@@ -16,9 +15,15 @@ custom_colors = {
     'critical': {'color': 'magenta', 'bold': True},
 }
 
+field_styles = {
+    'asctime': {'color': 'white'},
+    'levelname': {'color': 'green', 'bold': True},
+    'message': {'color': 'white'}
+}
+
 # Configure logging
 logger = logging.getLogger(__name__)
-coloredlogs.install(level='INFO', logger=logger, fmt='[%(asctime)s] [%(process)d] %(levelname)s %(message)s', level_styles=custom_colors)
+coloredlogs.install(level='INFO', logger=logger, fmt='[%(asctime)s] [%(process)d] %(levelname)s %(message)s', level_styles=custom_colors, field_styles=field_styles)
 
 def setup_directory(base_path):
     """Create the directory if it doesn't exist."""
