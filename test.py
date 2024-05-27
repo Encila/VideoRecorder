@@ -39,7 +39,7 @@ def record_video(picam2, duration, filename):
     """Record video for the specified duration."""
     try:
         logger.info(f"Recording video for {duration} seconds...")
-        picam2.start_and_record_video(filename, duration=duration)
+        picam2.start_and_record_video(filename, duration=duration, show_preview=True)
         logger.info(f"Recording complete. Video saved as {filename}.")
     except Exception as e:
         logger.error(f"Failed to record video: {e}")
