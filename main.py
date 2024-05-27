@@ -16,7 +16,7 @@ def enregistrer_video(duree):
         
     print(f"Enregistrement de la vidéo pendant {duree} secondes...")
 
-    picam2.start_and_record_video(fichier, duration=duree, config=video_config, show_preview=True) # show_preview=True, config=video_config
+    picam2.start_and_record_video(fichier, duration=duree, config=video_config) # show_preview=True, config=video_config
 
     print(f"Enregistrement terminé. Vidéo sauvegardée sous {fichier}")
 
