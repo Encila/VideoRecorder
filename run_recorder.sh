@@ -7,12 +7,12 @@ conda activate flower_detection
 
 # Vérifier l'activation de l'environnement
 if [ $? -ne 0 ]; then
-    echo "Failed to activate conda environment" >> ~/Desktop/flower_detection.log 2>&1
+    echo "Failed to activate conda environment"
     exit 1
 fi
 
 # Aller dans le répertoire VideoRecorder
-echo "Changing directory to ~/Desktop/VideoRecorder" >> ~/Desktop/flower_detection.log 2>&1
+echo "Changing directory to ~/Desktop/VideoRecorder"
 cd ~/Desktop/VideoRecorder
 
 # Exécuter le script Python
