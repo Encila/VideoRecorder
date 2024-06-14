@@ -12,6 +12,7 @@ Comment=Start the recording script
 Exec=${SCRIPT_PATH}
 Icon=utilities-terminal
 Terminal=true
+X-GNOME-Autostart-enabled=true
 "
 
 # Chemin du raccourci sur le bureau
@@ -25,5 +26,7 @@ chmod +x ${DESKTOP_PATH}
 
 # Rendre le script bash exécutable
 chmod +x ${SCRIPT_PATH}
+
+dconf write /org/gnome/nautilus/preferences/executable-text-activation "'launch'"
 
 echo "Setup complete. The shortcut has been created on the Desktop."
