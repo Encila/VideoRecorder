@@ -1,24 +1,24 @@
 #!/bin/bash
 
-# Activer l'environnement conda
+# Activate the conda environment
 echo "Activating conda environment"
 source /home/fablabensfea/miniconda3/etc/profile.d/conda.sh
 conda activate flower_detection
 
-# Vérifier l'activation de l'environnement
+# Verify the exit status of the conda command
 if [ $? -ne 0 ]; then
     echo "Failed to activate conda environment"
     exit 1
 fi
 
-# Aller dans le répertoire VideoRecorder
+# Move to the directory where the Python script is located
 echo "Changing directory to ~/Desktop/VideoRecorder"
 cd ~/Desktop/VideoRecorder
 
-# Exécuter le script Python
+# Execute the Python script
 python main.py
 
-# Vérifier l'exécution du script Python
+# Verify the exit status of the Python script
 if [ $? -ne 0 ]; then
     echo "Python script failed to run"
     exit 1

@@ -1,32 +1,29 @@
 #!/bin/bash
 
-# Chemin du script Bash à exécuter
+# Path to the Bash script to be executed
 SCRIPT_PATH="/home/fablabensfea/Desktop/VideoRecorder/run_recorder.sh"
 
-# Contenu du fichier .desktop
+# Content of the .desktop file
 DESKTOP_ENTRY="[Desktop Entry]
 Version=1.0
 Type=Application
-Name= Run VideoRecorder
+Name=VideoRecorder
 Comment=Start the recording script
 Exec=${SCRIPT_PATH}
 Icon=utilities-terminal
 Terminal=true
-X-GNOME-Autostart-enabled=true
 "
 
-# Chemin du raccourci sur le bureau
+# Path to the shortcut on the desktop
 DESKTOP_PATH="/home/fablabensfea/Desktop/VideoRecorder.desktop"
 
-# Écrire le contenu dans le fichier .desktop
+# Write the content to the .desktop file
 echo "${DESKTOP_ENTRY}" > ${DESKTOP_PATH}
 
-# Rendre le fichier .desktop exécutable
+# Make the .desktop file executable
 chmod +x ${DESKTOP_PATH}
 
-# Rendre le script bash exécutable
+# Make the Bash script executable
 chmod +x ${SCRIPT_PATH}
-
-dconf write /org/gnome/nautilus/preferences/executable-text-activation "'launch'"
 
 echo "Setup complete. The shortcut has been created on the Desktop."
