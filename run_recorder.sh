@@ -2,7 +2,7 @@
 
 # Activer l'environnement conda
 echo "Activating conda environment"
-#source /home/fablabensfea/miniconda3/etc/profile.d/conda.sh
+source /home/fablabensfea/miniconda3/etc/profile.d/conda.sh
 conda activate flower_detection
 
 # Vérifier l'activation de l'environnement
