@@ -1,7 +1,7 @@
 
 # VideoRecorder Setup
 
-This repository contains scripts to set up a shortcut on the desktop to run the VideoRecorder script.
+This repository contains a script to record video. The script can be executed from the terminal, but it can also be configured to run from a desktop shortcut. This guide provides instructions on how to set up the desktop shortcut for the video recorder script.
 
 ## Installation Steps
 
@@ -51,73 +51,18 @@ The `main.py` script records a video using the Picamera2. It includes the follow
 
 ### `run_recorder.sh`
 
-The `run_recorder.sh` script activates the conda environment and runs the `main.py` script:
-
-```bash
-#!/bin/bash
-
-# Activate the conda environment
-echo "Activating conda environment"
-source /home/fablabensfea/miniconda3/etc/profile.d/conda.sh
-conda activate flower_detection
-
-# Verify the exit status of the conda command
-if [ $? -ne 0 ]; then
-    echo "Failed to activate conda environment"
-    exit 1
-fi
-
-# Move to the directory where the Python script is located
-echo "Changing directory to ~/Desktop/VideoRecorder"
-cd ~/Desktop/VideoRecorder
-
-# Execute the Python script
-python main.py
-
-# Verify the exit status of the Python script
-if [ $? -ne 0 ]; then
-    echo "Python script failed to run"
-    exit 1
-fi
-
-echo "Script executed successfully"
-```
+The `run_recorder.sh` script activates the conda environment and runs the `main.py` script.
 
 ### `setup.sh`
 
-The `setup.sh` script creates a desktop shortcut to run the `run_recorder.sh` script:
+The `setup.sh` script performs the following actions:
 
-```bash
-#!/bin/bash
+1. Sets the path to the Bash script to be executed (`run_recorder.sh`).
+2. Creates a `.desktop` file with the necessary details to create a shortcut.
+3. Writes the `.desktop` file to the desktop.
+4. Makes both the `.desktop` file and the Bash script executable.
 
-# Path to the Bash script to be executed
-SCRIPT_PATH="/home/fablabensfea/Desktop/VideoRecorder/run_recorder.sh"
-
-# Content of the .desktop file
-DESKTOP_ENTRY="[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Run VideoRecorder
-Comment=Start the recording script
-Exec=${SCRIPT_PATH}
-Icon=utilities-terminal
-Terminal=true
-"
-
-# Path to the shortcut on the desktop
-DESKTOP_PATH="/home/fablabensfea/Desktop/VideoRecorder.desktop"
-
-# Write the content to the .desktop file
-echo "${DESKTOP_ENTRY}" > ${DESKTOP_PATH}
-
-# Make the .desktop file executable
-chmod +x ${DESKTOP_PATH}
-
-# Make the Bash script executable
-chmod +x ${SCRIPT_PATH}
-
-echo "Setup complete. The shortcut has been created on the Desktop."
-```
+After running the setup script, you should see a `VideoRecorder` shortcut on your desktop. Double-clicking this shortcut will execute the `run_recorder.sh` script in a terminal window.
 
 ## Troubleshooting
 
