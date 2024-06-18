@@ -69,3 +69,27 @@ After running the setup script, you should see a `VideoRecorder` shortcut on you
 - Ensure that the paths specified in the script (`SCRIPT_PATH` and `DESKTOP_PATH`) are correct and accessible.
 - If you encounter permission issues, make sure you have the necessary rights to execute scripts and create files on the desktop.
 - If the script does not execute as expected, check the terminal output for any error messages and verify the paths and file permissions.
+
+## Picamera2 Library Instructions
+
+The current Picamera2 version contains an issue about previews. To patch it, you'll have to correct the following files:
+
+```sh
+cd ~/miniconda3/envs/flower_detection//lib/python3.11/site-packages/picamera2/encoders
+nano libav_h264_encoder.py
+nano libav_mjpeg_encoder.py
+```
+
+In the `_encode_` function, replace this line:
+
+```py
+frame = av.VideoFrame.from_ndarray(m.array, format=self._av_input_format, width=self.width)
+```
+
+With this line:
+
+```py
+frame = av.VideoFrame.from_ndarray(m.array, format=self._av_input_format)
+```
+
+This patch will resolve the preview issue in the Picamera2 library.
